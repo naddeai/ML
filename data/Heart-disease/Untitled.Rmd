@@ -1,0 +1,17 @@
+---
+title: "Untitled"
+author: "Jesús López"
+date: "2024-05-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load data
+
+```{r}
+
+```
+
