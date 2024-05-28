@@ -1,0 +1,9 @@
+ipykernel
+ruff
+pandas
+openpyxl
+plotly
+matplotlib
+seaborn
+scikit-learn
+streamlit

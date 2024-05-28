@@ -1,0 +1,50 @@
+---
+title: "Untitled"
+author: "Jesús López"
+date: "2024-05-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load data
+
+```{r}
+library(dplyr)
+
+df <- read.csv('raw.csv', row.names = 1, stringsAsFactors = TRUE)
+
+df <- df %>% 
+  mutate_if(is.logical, as.factor)
+```
+
+```{r}
+columns <- colSums(is.na(df))
+mask <- columns > 100
+columns <- names(columns[!mask])
+```
+
+```{r}
+df <- df[columns]
+```
+
+
+## Missforest
+
+```{r}
+library(missForest)
+
+model <- missForest(df)
+```
+
+```{r}
+imp <-  model$ximp
+table(imp$fbs)
+```
+
+```{r}
+write.csv(imp, 'output/filled_missing.csv')
+```
+
